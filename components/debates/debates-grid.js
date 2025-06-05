@@ -1,21 +1,31 @@
-import Link from "next/link";
-
+import DebateItem from "./debateItem";
+const debates = [
+  {
+    title: "Should remote work be permanent?",
+    description:
+      "Discussing whether companies should allow permanent remote work.",
+    sideA: { title: "Yes", percentage: 65 },
+    sideB: { title: "No", percentage: 35 },
+    creator: "Alice",
+    createdAt: "2025-06-04T12:00:00Z",
+  },
+  {
+    title: "Should remote work be permanent?",
+    description:
+      "Discussing whether companies should allow permanent remote work.",
+    sideA: { title: "Yes", percentage: 65 },
+    sideB: { title: "No", percentage: 35 },
+    creator: "Alice",
+    createdAt: "2025-06-04T12:00:00Z",
+  },
+];
 
 export default function DebatesGrid({ debates }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {debates.map((debate) => (
         <div key={debate.id} className="bg-primary rounded-lg shadow-lg p-6">
-          <h3 className="text-secondary font-bold text-xl mb-2">
-            {debate.title}
-          </h3>
-          <p className="text-muted mb-4">{debate.description}</p>
-          <Link
-            href={`/debates/${debate.id}`}
-            className="btn-playful bg-background text-foreground"
-          >
-            Join Debate
-          </Link>
+          <DebateItem debate={debate} />
         </div>
       ))}
     </div>
