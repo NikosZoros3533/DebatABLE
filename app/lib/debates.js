@@ -18,9 +18,10 @@ export function saveDebate(debate) {
     lower: true,
     strict: true,
   });
-  
-  db.prepare("INSERT INTO debates (title, description, sideA_title, sideB_title, slug) VALUES (?, ?, ?, ?, ?)")
-    .run(title, description, sideA, sideB, slug);
-  
+
+  db.prepare(
+    "INSERT INTO debates (title, description, sideA_title, sideB_title, slug) VALUES (?, ?, ?, ?, ?)"
+  ).run(title, description, sideA, sideB, slug);
+
   return { success: true, message: "Debate added successfully!" };
 }
