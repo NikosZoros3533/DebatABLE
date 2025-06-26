@@ -5,14 +5,13 @@ import DebatesLoadingPage from "./loading-out";
 
 async function Debates() {
   const debates = await getDebates();
-  console.log(debates);
   return <DebatesGrid debates={debates} />;
 }
 
 export default async function DebatePage() {
   return (
     <>
-      <header className="flex flex-col items-center justify-start text-secondary mb-6">
+      <header className="flex flex-col items-center justify-start text-foreground mb-6 border-b border-foreground pb-4">
         <label className="text-4xl font-extrabold mt-5 tracking-wide uppercase">
           Fight
         </label>

@@ -2,13 +2,11 @@
 
 :root {
   /* Light theme */
-    --background: #0C0C0C;
-    --foreground: #E5EAFA;
-    --primary: #2C9480;
-    --secondary: #E6AAC5;
+  --background: #04151f;
+  --foreground: #efd6ac;
+  --primary: #183a37;
+  --secondary: #c44900;
 }
-
-
 
 @theme {
   /* Core colors */
@@ -16,7 +14,6 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
-
 
   /* Fonts */
   --font-sans: "Inter", "Comic Neue", sans-serif;
@@ -35,7 +32,6 @@ body {
 .playful-text {
   font-family: "Comic Neue", cursive;
 }
-
 
 .btn-playful {
   padding: 0.75rem 1.5rem;
