@@ -64,7 +64,7 @@ const dummyDebates = [
 
 db.prepare(
   `
-   CREATE TABLE debates (
+   CREATE TABLE IF NOT EXISTS debates (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     slug TEXT NOT NULL UNIQUE,
@@ -75,29 +75,34 @@ db.prepare(
     sideB_percentage REAL NOT NULL,
     creator TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-    )
-`
+  );
+  `
 ).run();
 
-async function initData() {
-  dummyDebates.forEach((debate) => {
-    db.prepare(
-      `
-    INSERT INTO debates (title, slug, description, sideA_title, sideA_percentage, sideB_title, sideB_percentage, creator)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-  `
-    ).run(
-      debate.title,
-      debate.slug,
-      debate.description,
-      debate.sideA.title,
-      debate.sideA.percentage,
-      debate.sideB.title,
-      debate.sideB.percentage,
-      debate.creator
-    );
-  });
+function initData() {
+  const row = db.prepare("SELECT COUNT(*) as count FROM debates").get();
+  if (row.count === 0) {
+    dummyDebates.forEach((debate) => {
+      db.prepare(
+        `
+      INSERT INTO debates (title, slug, description, sideA_title, sideA_percentage, sideB_title, sideB_percentage, creator)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `
+      ).run(
+        debate.title,
+        debate.slug,
+        debate.description,
+        debate.sideA.title,
+        debate.sideA.percentage,
+        debate.sideB.title,
+        debate.sideB.percentage,
+        debate.creator
+      );
+    });
+    console.log("Dummy debates inserted.");
+  } else {
+    console.log("Debates table already has data.");
+  }
 }
 
 initData();

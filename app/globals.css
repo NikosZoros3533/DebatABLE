@@ -2,10 +2,10 @@
 
 :root {
   /* Light theme */
-  --background: #093824;
+    --background: #0C0C0C;
     --foreground: #E5EAFA;
-    --primary: #BF4E30;
-    --secondary: #C6CCB2;
+    --primary: #2C9480;
+    --secondary: #E6AAC5;
 }
 
 

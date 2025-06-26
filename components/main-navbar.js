@@ -4,16 +4,16 @@ import { usePathname } from "next/navigation";
 
 export default function MainHeader() {
   const path = usePathname();
-  const isActiveClass = "hover:text-muted text-primary font-bold tracking-wide";
+  const isActiveClass = "hover:text-muted text-secondary font-bold tracking-wide";
   return (
-    <header className="py-4 bg-background font-heading border-b border-primary">
+    <header className="py-4 bg-primary font-heading border-b border-primary">
       <nav className="container mx-auto flex justify-between items-center ">
         <Link
           href="/"
           className={path === "/" ? isActiveClass : "hover:text-muted"}
         >
           <div className="text-foreground text-lg font-bold playful-text">
-            Debate<span className="text-primary">ABLE</span>
+            Debate<span className="text-secondary">ABLE</span>
           </div>
         </Link>
         <ul className="flex space-x-4">
@@ -36,7 +36,7 @@ export default function MainHeader() {
                   : "hover:text-muted"
               }
             >
-              Share<span className="text-primary">+</span>
+              Share<span className="text-secondary">+</span>
             </Link>
           </li>
         </ul>
