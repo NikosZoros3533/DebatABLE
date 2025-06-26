@@ -1,8 +1,10 @@
+import { shareDebate } from "@/app/lib/actions";
+
 export default function ShareDebatePage() {
     return (
         <div className="max-w-lg mx-auto my-8 p-8 rounded-lg">
             <h2 className="text-center mb-6 text-2xl font-semibold text-primary">Add a New Debate</h2>
-            <form>
+            <form action={shareDebate}>
                 <div className="mb-4">
                     <label htmlFor="title" className="block mb-2 font-medium text-secondary">Debate Title</label>
                     <input

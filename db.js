@@ -67,13 +67,13 @@ db.prepare(
    CREATE TABLE IF NOT EXISTS debates (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
-    slug TEXT NOT NULL UNIQUE,
+    slug TEXT UNIQUE,
     description TEXT NOT NULL,
     sideA_title TEXT NOT NULL,
-    sideA_percentage REAL NOT NULL,
+    sideA_percentage,
     sideB_title TEXT NOT NULL,
-    sideB_percentage REAL NOT NULL,
-    creator TEXT NOT NULL,
+    sideB_percentage,
+    creator TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
   `
