@@ -1,5 +1,6 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import { saveDebate } from "./debates";
 
 export async function shareDebate(formData) {
@@ -11,7 +12,8 @@ export async function shareDebate(formData) {
   };
 
   console.log(debate);
-  saveDebate(debate);
+  await saveDebate(debate);
+  redirect("/debates");
 
   return { success: true, message: "Debate shared successfully!" };
 }

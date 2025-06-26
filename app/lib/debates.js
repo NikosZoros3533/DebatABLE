@@ -12,16 +12,16 @@ export function getDebate(slug) {
   return db.prepare("SELECT * FROM debates WHERE slug = ?").get(slug);
 }
 
-export function saveDebate(debate) {
+export async function saveDebate(debate) {
   const { title, description, sideA, sideB } = debate;
   const slug = slugify(title, {
     lower: true,
     strict: true,
   });
-
+  const creator = "Anonymous"; 
   db.prepare(
-    "INSERT INTO debates (title, description, sideA_title, sideB_title, slug) VALUES (?, ?, ?, ?, ?)"
-  ).run(title, description, sideA, sideB, slug);
+    "INSERT INTO debates (title, description, sideA_title, sideB_title, slug, creator) VALUES (?, ?, ?, ?, ?, ?)"
+  ).run(title, description, sideA, sideB, slug, creator);
 
   return { success: true, message: "Debate added successfully!" };
 }
