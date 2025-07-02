@@ -3,7 +3,7 @@ import slugify from "slugify";
 const db = sql("debates.db");
 
 export async function getDebates() {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   // throw new Error("Database connection failed");
   return db.prepare("SELECT * FROM debates").all();
 }

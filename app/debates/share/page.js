@@ -1,12 +1,17 @@
+"use client";
 import { shareDebate } from "@/app/lib/actions";
+import DebatesFormSubmit from "@/components/debates/debate-form-submit";
+import { useActionState } from "react";
 
 export default function ShareDebatePage() {
+  // const [state, formAction] = useActionState(shareDebate, { message: null });
+  const [state, formAction] = useActionState(shareDebate, { message: null });
   return (
     <div className="max-w-lg mx-auto my-8 p-8 rounded-lg">
-      <h2 className="text-center mb-6 text-2xl font-semibold text-primary">
+      <h2 className="text-center mb-6 text-2xl font-semibold text-secondary">
         Add a New Debate
       </h2>
-      <form action={shareDebate}>
+      <form action={formAction}>
         <div className="mb-4">
           <label
             htmlFor="title"
@@ -71,12 +76,10 @@ export default function ShareDebatePage() {
             required
           />
         </div>
-        <button
-          type="submit"
-          className="w-full py-3 bg-primary text-secondary rounded font-semibold text-lg hover:bg-secondary hover:cursor-grab hover:text-primary transition"
-        >
-          Add Debate
-        </button>
+        {state.message && (
+          <div className="mb-4 text-foreground">{state.message}</div>
+        )}
+        <DebatesFormSubmit />
       </form>
     </div>
   );
