@@ -4,16 +4,21 @@ import { usePathname } from "next/navigation";
 
 export default function MainHeader() {
   const path = usePathname();
-  const isActiveClass = "hover:text-muted text-secondary font-bold tracking-wide";
+  const isActiveClass = "text-secondary font-bold tracking-wide";
+  const isHome= path === "/"
   return (
     <header className="py-4 bg-primary font-heading border-b border-primary">
       <nav className="container mx-auto flex justify-between items-center ">
         <Link
           href="/"
-          className={path === "/" ? isActiveClass : "hover:text-muted"}
         >
-          <div className="text-foreground text-lg font-bold playful-text">
-            Debate<span className="text-secondary">ABLE</span>
+          <div className="text-lg font-bold playful-text">
+            <span className={isHome ? "text-secondary" : "text-foreground"}>
+              Debate
+            </span>
+            <span className={isHome ? "text-foreground" : "text-secondary"}>
+              ABLE
+            </span>
           </div>
         </Link>
         <ul className="flex space-x-4">
@@ -21,7 +26,7 @@ export default function MainHeader() {
             <Link
               href="/debates"
               className={
-                path.endsWith("/debates") ? isActiveClass : "hover:text-muted"
+                path.endsWith("/debates") ? isActiveClass : "hover:text-background"
               }
             >
               Debates
@@ -33,7 +38,7 @@ export default function MainHeader() {
               className={
                 path.startsWith("/debates/share")
                   ? isActiveClass
-                  : "hover:text-muted"
+                  : "hover:text-background"
               }
             >
               Share<span className="text-secondary">+</span>
