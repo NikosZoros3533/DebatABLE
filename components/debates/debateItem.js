@@ -1,4 +1,7 @@
 import Link from "next/link";
+import {BiUpvote, BiDownvote} from "react-icons/bi";
+import { upvote,downvote } from "@/app/lib/actions";
+import VoteButton from "../buttons/voteButton";
 
 const DebateItem = ({ debate }) => {
   const {
@@ -51,6 +54,9 @@ const DebateItem = ({ debate }) => {
           </div>
         </div>
       </Link>
+      <div className="flex items-center gap-4 mb-4">
+          <VoteButton slug={debate.slug} sideA_votes={sideA_votes} sideB_votes={sideB_votes}/>
+        </div>
     </div>
   );
 };

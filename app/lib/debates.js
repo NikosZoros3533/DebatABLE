@@ -25,3 +25,24 @@ export async function saveDebate(debate) {
 
   return { success: true, message: "Debate added successfully!" };
 }
+
+
+export async function upvoteDebate(slug) {
+  const debate = db.prepare("SELECT * FROM debates WHERE slug = ?").get(slug);
+  if (!debate) {
+    throw new Error("Debate not found");
+  }
+  const updatedVotes = debate.sideA_votes + 1;
+  db.prepare("UPDATE debates SET sideA_votes = ? WHERE slug = ?").run(updatedVotes, slug);
+  return { success: true, message: "Upvoted successfully!" };
+}
+
+export async function downvoteDebate(slug) {
+  const debate = db.prepare("SELECT * FROM debates WHERE slug = ?").get(slug);
+  if (!debate) {
+    throw new Error("Debate not found");
+  }
+  const updatedVotes = debate.sideB_votes + 1;
+  db.prepare("UPDATE debates SET sideB_votes = ? WHERE slug = ?").run(updatedVotes, slug);
+  return { success: true, message: "Downvoted successfully!" };
+} 
