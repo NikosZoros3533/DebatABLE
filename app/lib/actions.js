@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { saveDebate, upvoteDebate, downvoteDebate } from "./debates";
+import { revalidatePath } from "next/cache";
 
 export async function shareDebate(prevState,formData) {
   const debate = {
@@ -28,6 +29,7 @@ export async function shareDebate(prevState,formData) {
 
   console.log(debate);
   await saveDebate(debate);
+  revalidatePath("/debates");
   redirect("/debates");
 
   // return { success: true, message: "Debate shared successfully!" };
@@ -36,6 +38,7 @@ export async function shareDebate(prevState,formData) {
 export async function upvote(slug) {
   try {
     await upvoteDebate(slug);
+    revalidatePath("/debates");
     redirect("/debates");
   } catch (error) {
     console.error("Error upvoting debate:", error);
@@ -46,6 +49,7 @@ export async function upvote(slug) {
 export async function downvote(slug) {
   try {
     await downvoteDebate(slug);
+    revalidatePath("/debates");
     redirect("/debates");
   } catch (error) {
     console.error("Error downvoting debate:", error);
