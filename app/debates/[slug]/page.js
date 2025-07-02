@@ -1,8 +1,21 @@
 import { getDebate } from "@/app/lib/debates";
 import { notFound } from "next/navigation";
 
-export default function DebateDetailPage({ params }) {
-  const debate = getDebate(params.slug); 
+
+export async function generateMetadata({ params }) {
+  const debate = await getDebate(params.slug);
+  if (!debate) {
+    notFound();
+  }
+  return {
+    title: `${debate.title}`,
+    description: debate.description || "No description available for this debate.",
+  };
+}
+
+
+export default async function DebateDetailPage({ params }) {
+  const debate =await getDebate(params.slug); 
   if (!debate) {
     notFound();
   }

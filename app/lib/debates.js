@@ -8,7 +8,7 @@ export async function getDebates() {
   return db.prepare("SELECT * FROM debates").all();
 }
 
-export function getDebate(slug) {
+export async function getDebate(slug) {
   return db.prepare("SELECT * FROM debates WHERE slug = ?").get(slug);
 }
 

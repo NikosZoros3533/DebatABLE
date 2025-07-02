@@ -3,6 +3,11 @@ import { getDebates } from "../lib/debates";
 import { Suspense } from "react";
 import DebatesLoadingPage from "./loading-out";
 
+export const metadata = {
+  title: "All Debates",
+  description: "Browse and participate in ongoing debates",
+};
+
 async function Debates() {
   const debates = await getDebates();
   return <DebatesGrid debates={debates} />;

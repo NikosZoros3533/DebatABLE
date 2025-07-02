@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "DebateAble",
-  description: "Site for resolving the Debates",
+  description: "Site for resolving the Debates that who wins a Fight",
 };
 
 export default function RootLayout({ children }) {

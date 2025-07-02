@@ -14,7 +14,7 @@ export default function Home() {
         </div>
         <div className="flex justify-center gap-6 mt-6">
           <Link href="/debates" className="btn-playful bg-primary text-foreground">
-            Help to Resolve
+            Browse to Resolve
           </Link>
           <Link href="/debates/share" className="btn-playful bg-secondary text-background">
             Share your point
