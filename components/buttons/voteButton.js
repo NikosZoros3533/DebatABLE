@@ -12,7 +12,7 @@ export default function VoteButton({ slug, sideA_votes, sideB_votes }) {
         <BiUpvote /> {sideA_votes}
       </button>
       <button
-        className="flex items-center gap-1 text-sm text-secondary hover:text-red-700 cursor-pointer"
+        className="flex items-center gap-1 text-sm text-foreground hover:text-red-700 cursor-pointer"
         onClick={() => downvote(slug)}
       >
         <BiDownvote /> {sideB_votes}
